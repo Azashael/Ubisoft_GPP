@@ -8,7 +8,15 @@ public class Slime : MonoBehaviour
     [SerializeField]
     private Animator _animator;
     [SerializeField]
-    private string _animationName;
+    private string _animationFallingParameterName;
+    [SerializeField]
+    private string _animatioJellyParameterName;
+    [Header("Tags ground")]
+    [SerializeField]
+    private string _groundTag;
+    [SerializeField]
+    private string _jellyTag;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,13 +31,23 @@ public class Slime : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        this._animator.SetBool(this._animationName, true);
-        Debug.Log("Trigger exit");
+        this._animator.SetBool(this._animationFallingParameterName, true);
+        this._animator.SetBool(this._animatioJellyParameterName, false);
+        Debug.Log("Trigger exit " + other.tag);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        this._animator.SetBool(this._animationName, false);
-        Debug.Log("Trigger Enter");
+        if(other.tag == this._groundTag)
+        {
+            this._animator.SetBool(this._animationFallingParameterName, false);
+            this._animator.SetBool(this._animatioJellyParameterName, false);
+        }
+        else if(other.tag == this._jellyTag)
+        {
+            this._animator.SetBool(this._animationFallingParameterName, false);
+            this._animator.SetBool(this._animatioJellyParameterName, true);
+        }
+        Debug.Log("Trigger enter " + other.tag);
     }
 }
