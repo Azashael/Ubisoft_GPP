@@ -16,38 +16,65 @@ public class Slime : MonoBehaviour
     private string _groundTag;
     [SerializeField]
     private string _jellyTag;
+    [Header("Rigidbody")]
+    [SerializeField]
+    private Rigidbody _rb;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private int _countCollider = 0;
+    private int _countJelly = 0;
 
-    // Update is called once per frame
     void Update()
     {
+        if (Input.touchCount > 0)
+        {
+            Touch t = Input.GetTouch(0);
 
+            transform.position = new Vector3(transform.position.x + t.deltaPosition.x * .01f, transform.position.y, transform.position.z);
+        }
     }
 
+    
     private void OnTriggerExit(Collider other)
     {
-        this._animator.SetBool(this._animationFallingParameterName, true);
-        this._animator.SetBool(this._animatioJellyParameterName, false);
-        Debug.Log("Trigger exit " + other.tag);
+        if (other.tag == this._jellyTag)
+        {
+            this._countJelly--;
+        }
+        if (other.tag == this._groundTag)
+        {
+            this._countCollider--;
+
+        }
+
+        if (this._countJelly == 0)
+        {
+            this._animator.SetBool(this._animatioJellyParameterName, false);
+        }
+        else
+        {
+            this._animator.SetBool(this._animatioJellyParameterName, true); 
+        }
+
+        if (this._countCollider + this._countJelly == 0)
+        {
+            this._animator.SetBool(this._animationFallingParameterName, true);
+            this._animator.SetBool(this._animatioJellyParameterName, false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == this._groundTag)
         {
+            this._countCollider++;
             this._animator.SetBool(this._animationFallingParameterName, false);
             this._animator.SetBool(this._animatioJellyParameterName, false);
         }
         else if(other.tag == this._jellyTag)
         {
+            this._countJelly++;
             this._animator.SetBool(this._animationFallingParameterName, false);
             this._animator.SetBool(this._animatioJellyParameterName, true);
         }
-        Debug.Log("Trigger enter " + other.tag);
     }
 }
