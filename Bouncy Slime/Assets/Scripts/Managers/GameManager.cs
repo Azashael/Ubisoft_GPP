@@ -22,4 +22,9 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    public void UpdatePoints(int pts)
+    {
+        this._uiManager.UpdatePoints(pts);
+    }
 }

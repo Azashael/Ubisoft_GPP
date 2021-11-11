@@ -11,17 +11,22 @@ public class Slime : MonoBehaviour
     private string _animationFallingParameterName;
     [SerializeField]
     private string _animatioJellyParameterName;
+    [SerializeField]
+    private string _animationGoParameterName;
     [Header("Tags ground")]
     [SerializeField]
     private string _groundTag;
     [SerializeField]
     private string _jellyTag;
+    [SerializeField]
+    private string _endTag;
     [Header("Rigidbody")]
     [SerializeField]
     private Rigidbody _rb;
 
     private int _countCollider = 0;
     private int _countJelly = 0;
+    private int _countJump = 0;
 
     void Update()
     {
@@ -76,5 +81,17 @@ public class Slime : MonoBehaviour
             this._animator.SetBool(this._animationFallingParameterName, false);
             this._animator.SetBool(this._animatioJellyParameterName, true);
         }
+        else if(other.tag == this._endTag)
+        {
+            this._animator.SetBool(this._animationGoParameterName, false);
+            this._animator.SetBool(this._animatioJellyParameterName, false);
+            this._animator.SetBool(this._animationFallingParameterName, false);
+        }
+    }
+
+    private void CountPoints()
+    {
+        this._countJump++;
+        GameManager.instance.UpdatePoints(this._countJump);
     }
 }

@@ -29,7 +29,10 @@ public class LevelManager : MonoBehaviour
     private PieceOfPath[] _easyPrefabs;
 
     private List<PieceOfPath> _currentPath;
-    private int _maxLength;
+    [SerializeField]
+    private int _maxLengthJump;
+    private int _lengthJumpPath = 0;
+    private bool _generate = true;
 
     void Start()
     {
@@ -47,13 +50,26 @@ public class LevelManager : MonoBehaviour
             segment.transform.Translate((-Vector3.forward * Time.deltaTime) * this._speedScroll);
         }
 
+
+
         if (this._currentPath[0].transform.position.z + this._currentPath[0].Length < this._limitZ)
         {
             Destroy(this._currentPath[0].gameObject);
             this._currentPath.RemoveAt(0);
         }
 
-        GeneratePath();
+        if (this._generate)
+        {
+            if (this._lengthJumpPath < this._maxLengthJump)
+            {
+                GeneratePath();
+            }
+            else
+            {
+                this._generate = false;
+                GenerateEnd();
+            }
+        }
     }
 
     void GeneratePath()
@@ -62,7 +78,18 @@ public class LevelManager : MonoBehaviour
         {
             GameObject newTile = Instantiate(this._prefabTest.gameObject, this._pathContainer.transform);
             newTile.transform.position = this._currentPath[this._currentPath.Count - 1].transform.position + new Vector3 (0, 0, this._currentPath[this._currentPath.Count - 1].Length);
-            this._currentPath.Add(newTile.GetComponent<PieceOfPath>());
+            PieceOfPath popNewTile = newTile.GetComponent<PieceOfPath>();
+            this._lengthJumpPath += popNewTile.JumpCount;
+            this._currentPath.Add(popNewTile);
         }
+    }
+
+    void GenerateEnd()
+    {
+        GameObject newTile = Instantiate(this._endPath.gameObject, this._pathContainer.transform);
+        newTile.transform.position = this._currentPath[this._currentPath.Count - 1].transform.position + new Vector3(0, 0, this._currentPath[this._currentPath.Count - 1].Length);
+        PieceOfPath popNewTile = newTile.GetComponent<PieceOfPath>();
+        this._lengthJumpPath += popNewTile.JumpCount;
+        this._currentPath.Add(popNewTile);
     }
 }

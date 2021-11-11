@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Jelly
+  - End
   layers:
   - Default
   - TransparentFX

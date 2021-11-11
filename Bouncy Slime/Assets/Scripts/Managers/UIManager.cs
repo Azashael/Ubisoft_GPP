@@ -8,17 +8,12 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject _menu;
     [SerializeField]
-    private GameObject _inGame;
+    private InGameMenuManager _inGame;
     [SerializeField]
     private GameObject _gameOver;
 
-    void Start()
+    public void UpdatePoints(int pts)
     {
-        
-    }
-
-    void Update()
-    {
-        
+        this._inGame.UpdatePoints(pts);
     }
 }
