@@ -5,6 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     static public GameManager instance { get { return s_Instance; } }
+
+    public bool PauseGameValue { get => this._pauseGame; }
+
     static protected GameManager s_Instance;
 
     [Header("Managers")]
@@ -28,6 +31,8 @@ public class GameManager : MonoBehaviour
     private int _nextLevelLimit;
     private int _moneyOwned;
 
+    private bool _pauseGame = true;
+
     void Start()
     {
         s_Instance = this;
@@ -35,11 +40,31 @@ public class GameManager : MonoBehaviour
         GetPlayerPref();
 
         SetLevel();
+
+        PauseGame();
     }
 
     void Update()
     {
         
+    }
+
+    public void PauseGame()
+    {
+        this._pauseGame = true;
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        this._pauseGame = false;
+        Time.timeScale = 1;
+    }
+
+    public void StartGame()
+    {
+        ResumeGame();
+        this._uiManager.GoToInGameMenu();
     }
 
     public void UpdatePoints(int pts)
@@ -86,7 +111,7 @@ public class GameManager : MonoBehaviour
     private void SetLevel()
     {
         this._levelManager.SetLevelLength(this._levelMaxLength);
-        this._levelManager.enabled = true;
+        this._levelManager.gameObject.SetActive(true);
     }
 
     private void SetMainMenu()

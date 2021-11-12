@@ -24,4 +24,11 @@ public class UIManager : MonoBehaviour
         this._menu.SetData(level, money);
         this._menu.enabled = true;
     }
+
+    public void GoToInGameMenu()
+    {
+        this._menu.gameObject.SetActive(false);
+        this._gameOver.gameObject.SetActive(false);
+        this._inGame.gameObject.SetActive(true);
+    }
 }

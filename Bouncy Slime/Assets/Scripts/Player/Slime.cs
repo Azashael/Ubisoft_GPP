@@ -28,17 +28,19 @@ public class Slime : MonoBehaviour
     private int _countJelly = 0;
     private int _countJump = 0;
 
-    void Update()
+    private void Update()
     {
-        if (Input.touchCount > 0)
+        if (!GameManager.instance.PauseGameValue)
         {
-            Touch t = Input.GetTouch(0);
+            if (Input.touchCount > 0)
+            {
+                Touch t = Input.GetTouch(0);
 
-            transform.position = new Vector3(transform.position.x + t.deltaPosition.x * .01f, transform.position.y, transform.position.z);
+                transform.position = new Vector3(transform.position.x + t.deltaPosition.x * .01f, transform.position.y, transform.position.z);
+            }
         }
     }
 
-    
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == this._jellyTag)

@@ -43,7 +43,7 @@ public class LevelManager : MonoBehaviour
         GeneratePath();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         MoveTiles();
 
