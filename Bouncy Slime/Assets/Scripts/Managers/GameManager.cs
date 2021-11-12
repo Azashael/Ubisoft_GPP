@@ -49,6 +49,18 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void InversePauseGame()
+    {
+        if(this._pauseGame)
+        {
+            ResumeGame();
+        }
+        else
+        {
+            PauseGame();
+        }
+    }
+
     public void PauseGame()
     {
         this._pauseGame = true;
@@ -64,7 +76,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         ResumeGame();
-        this._uiManager.GoToInGameMenu();
+        this._uiManager.GoToInGameMenu(this._nextLevelLimit);
     }
 
     public void UpdatePoints(int pts)

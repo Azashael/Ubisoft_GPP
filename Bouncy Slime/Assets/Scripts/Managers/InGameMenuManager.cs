@@ -19,6 +19,12 @@ public class InGameMenuManager : MonoBehaviour
         this._slideScore.value = pts;
     }
 
+    public void SetObjective(int objective)
+    {
+        this._slideScore.maxValue = objective;
+        this._slideScore.minValue = 0;
+    }
+
     private float timer, refresh, avgFramerate;
     string display = "{0} FPS";
     [SerializeField]
