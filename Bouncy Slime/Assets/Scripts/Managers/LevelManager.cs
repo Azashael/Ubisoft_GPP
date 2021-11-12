@@ -32,20 +32,15 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private int _maxLengthJump;
     private int _lengthJumpPath = 0;
-    private bool _generate = true;
-
-    void OnEnable()
-    {
-        _currentPath = new List<PieceOfPath>();
-        GameObject startTile = Instantiate(this._startPath.gameObject, this._pathContainer.transform);
-        startTile.transform.position = new Vector3(0, 0, -.5f);
-        this._currentPath.Add(startTile.GetComponent<PieceOfPath>());
-        GeneratePath();
-    }
+    private bool _generate = false;
+    private bool _move = false;
 
     private void FixedUpdate()
     {
-        MoveTiles();
+        if (this._move)
+        { 
+            MoveTiles(); 
+        }
 
         RemoveFirst();
 
@@ -60,6 +55,12 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public void StartMoving()
+    {
+        this._generate = true;
+        this._move = true;
+    }
+
     private void RemoveFirst()
     {
         if (this._currentPath[0].transform.position.z + this._currentPath[0].Length < this._limitZ)
@@ -67,6 +68,15 @@ public class LevelManager : MonoBehaviour
             Destroy(this._currentPath[0].gameObject);
             this._currentPath.RemoveAt(0);
         }
+    }
+
+    private void GenerateStart()
+    {
+        _currentPath = new List<PieceOfPath>();
+        GameObject startTile = Instantiate(this._startPath.gameObject, this._pathContainer.transform);
+        startTile.transform.position = new Vector3(0, 0, -.5f);
+        this._currentPath.Add(startTile.GetComponent<PieceOfPath>());
+        GeneratePath();
     }
 
     private void GenerateNext()
@@ -109,5 +119,21 @@ public class LevelManager : MonoBehaviour
     public void SetLevelLength(int length)
     {
         this._maxLengthJump = length;
+    }
+
+    public void EndLevel()
+    {
+        foreach(PieceOfPath p in this._currentPath)
+        {
+            Destroy(p.gameObject);
+        }
+        this._currentPath.Clear();
+        this._generate = false;
+        this._move = false;
+    }
+
+    public void StartPath()
+    {
+        GenerateStart();
     }
 }

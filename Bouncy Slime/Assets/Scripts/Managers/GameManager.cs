@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
 
         SetLevel();
 
+        SetMainMenu();
+
         PauseGame();
     }
 
@@ -77,6 +79,7 @@ public class GameManager : MonoBehaviour
     {
         ResumeGame();
         this._uiManager.GoToInGameMenu(this._nextLevelLimit);
+        this._levelManager.StartMoving();
     }
 
     public void UpdatePoints(int pts)
@@ -101,9 +104,14 @@ public class GameManager : MonoBehaviour
         {
             this._nextLevel = 1;
             this._nextLevelLimit = this._levelMaxLength + (this._incrementLevelMaxLength * (this._nextLevel - 1));
-            PlayerPrefs.SetInt(this._keyLevel, 1);
-            PlayerPrefs.Save();
+            SaveLevel();
         }
+    }
+
+    private void SaveLevel()
+    {
+        PlayerPrefs.SetInt(this._keyLevel, this._nextLevel);
+        PlayerPrefs.Save();
     }
 
     private void GetMoney()
@@ -123,11 +131,34 @@ public class GameManager : MonoBehaviour
     private void SetLevel()
     {
         this._levelManager.SetLevelLength(this._levelMaxLength);
+        this._levelManager.StartPath();
         this._levelManager.gameObject.SetActive(true);
     }
 
     private void SetMainMenu()
     {
-        this._uiManager.SetMainMenu(this._nextLevel, this._moneyOwned);
+        this._uiManager.SetMainMenu(this._nextLevel);
+    }
+
+    public void Victory()
+    {
+        this._uiManager.GoToVictoryMenu();
+        this._levelManager.EndLevel();
+        this._nextLevel++;
+        this._nextLevelLimit = this._levelMaxLength + (this._incrementLevelMaxLength * (this._nextLevel - 1));
+        SaveLevel();
+        SetLevel();
+    }
+
+    public void Defeat(int score)
+    {
+        this._uiManager.GoToGameOverMenu(score, this._nextLevelLimit);
+        this._levelManager.EndLevel();
+        SetLevel();
+    }
+
+    public void ReturnToMainMenu()
+    {
+        this._uiManager.GoToMainMenu(this._nextLevel);
     }
 }

@@ -88,7 +88,20 @@ public class Slime : MonoBehaviour
             this._animator.SetBool(this._animationGoParameterName, false);
             this._animator.SetBool(this._animatioJellyParameterName, false);
             this._animator.SetBool(this._animationFallingParameterName, false);
+            Victory();
         }
+    }
+
+    public void Defeat()
+    {
+        GameManager.instance.Defeat(this._countJump);
+        this._animator.Rebind();
+        transform.position = new Vector3(0, 1, 0);
+    }
+
+    public void Victory()
+    {
+        GameManager.instance.Victory();
     }
 
     private void CountPoints()

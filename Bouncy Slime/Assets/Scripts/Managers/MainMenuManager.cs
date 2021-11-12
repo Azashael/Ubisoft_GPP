@@ -8,12 +8,9 @@ public class MainMenuManager : MonoBehaviour
     [Header("Composants")]
     [SerializeField]
     private LevelDisplayer _levelDisplay;
-    [SerializeField]
-    private Text _moneyDisplay;
 
-    public void SetData(int level, int money)
+    public void SetData(int level)
     {
         this._levelDisplay.SetLevel(level);
-        this._moneyDisplay.text = money.ToString();
     }
 }

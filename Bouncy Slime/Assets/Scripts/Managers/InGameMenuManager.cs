@@ -21,6 +21,7 @@ public class InGameMenuManager : MonoBehaviour
 
     public void SetObjective(int objective)
     {
+        this._leftLevelScore.text = objective.ToString();
         this._slideScore.maxValue = objective;
         this._slideScore.minValue = 0;
     }
