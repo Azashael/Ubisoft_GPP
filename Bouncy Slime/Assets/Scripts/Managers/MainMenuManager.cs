@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Composants")]
+    [SerializeField]
+    private LevelDisplayer _levelDisplay;
+    [SerializeField]
+    private Text _moneyDisplay;
 
-    // Update is called once per frame
-    void Update()
+    public void SetData(int level, int money)
     {
-        
+        this._levelDisplay.SetLevel(level);
+        this._moneyDisplay.text = money.ToString();
     }
 }

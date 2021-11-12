@@ -34,7 +34,7 @@ public class LevelManager : MonoBehaviour
     private int _lengthJumpPath = 0;
     private bool _generate = true;
 
-    void Start()
+    void OnEnable()
     {
         _currentPath = new List<PieceOfPath>();
         GameObject startTile = Instantiate(this._startPath.gameObject, this._pathContainer.transform);
@@ -45,19 +45,32 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        foreach(PieceOfPath segment in this._currentPath)
+        MoveTiles();
+
+        RemoveFirst();
+
+        GenerateNext();
+    }
+
+    private void MoveTiles()
+    {
+        foreach (PieceOfPath segment in this._currentPath)
         {
             segment.transform.Translate((-Vector3.forward * Time.deltaTime) * this._speedScroll);
         }
+    }
 
-
-
+    private void RemoveFirst()
+    {
         if (this._currentPath[0].transform.position.z + this._currentPath[0].Length < this._limitZ)
         {
             Destroy(this._currentPath[0].gameObject);
             this._currentPath.RemoveAt(0);
         }
+    }
 
+    private void GenerateNext()
+    {
         if (this._generate)
         {
             if (this._lengthJumpPath < this._maxLengthJump)
@@ -72,7 +85,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void GeneratePath()
+    private void GeneratePath()
     {
         if(this._currentPath.Count < this._minTiles)
         {
@@ -84,12 +97,17 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void GenerateEnd()
+    private void GenerateEnd()
     {
         GameObject newTile = Instantiate(this._endPath.gameObject, this._pathContainer.transform);
         newTile.transform.position = this._currentPath[this._currentPath.Count - 1].transform.position + new Vector3(0, 0, this._currentPath[this._currentPath.Count - 1].Length);
         PieceOfPath popNewTile = newTile.GetComponent<PieceOfPath>();
         this._lengthJumpPath += popNewTile.JumpCount;
         this._currentPath.Add(popNewTile);
+    }
+
+    public void SetLevelLength(int length)
+    {
+        this._maxLengthJump = length;
     }
 }

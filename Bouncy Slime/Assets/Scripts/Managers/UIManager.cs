@@ -6,14 +6,22 @@ public class UIManager : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField]
-    private GameObject _menu;
+    private MainMenuManager _menu;
     [SerializeField]
     private InGameMenuManager _inGame;
     [SerializeField]
     private GameObject _gameOver;
 
+
+
     public void UpdatePoints(int pts)
     {
         this._inGame.UpdatePoints(pts);
+    }
+
+    public void SetMainMenu(int level, int money)
+    {
+        this._menu.SetData(level, money);
+        this._menu.enabled = true;
     }
 }

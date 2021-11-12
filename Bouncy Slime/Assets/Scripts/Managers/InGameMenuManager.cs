@@ -18,4 +18,20 @@ public class InGameMenuManager : MonoBehaviour
         this._rightPlayerScore.text = pts.ToString();
         this._slideScore.value = pts;
     }
+
+    private float timer, refresh, avgFramerate;
+    string display = "{0} FPS";
+    [SerializeField]
+    private Text _fpsText;
+
+
+    private void Update()
+    {
+        //Change smoothDeltaTime to deltaTime or fixedDeltaTime to see the difference
+        float timelapse = Time.smoothDeltaTime;
+        timer = timer <= 0 ? refresh : timer -= timelapse;
+
+        if (timer <= 0) avgFramerate = (int)(1f / timelapse);
+        _fpsText.text = string.Format(display, avgFramerate.ToString());
+    }
 }

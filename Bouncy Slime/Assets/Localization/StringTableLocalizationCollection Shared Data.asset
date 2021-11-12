@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TableCollectionName: StringTableLocalizationCollection
   m_TableCollectionNameGuidString: 428c09ae064f3fe449fc2c46469bb69d
-  m_Entries: []
+  m_Entries:
+  - m_Id: 208432656437248
+    m_Key: LevelDisplay.Text.Int
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

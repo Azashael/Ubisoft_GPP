@@ -12,10 +12,29 @@ public class GameManager : MonoBehaviour
     private UIManager _uiManager;
     [SerializeField]
     private LevelManager _levelManager;
+    [Header("Calibrage")]
+    [SerializeField]
+    private int _levelMaxLength;
+    [SerializeField]
+    private int _incrementLevelMaxLength;
+    [Header("PlayerPref")]
+    [SerializeField]
+    private string _keyLevel;
+    [SerializeField]
+    private string _keyMoney;
+
+
+    private int _nextLevel;
+    private int _nextLevelLimit;
+    private int _moneyOwned;
 
     void Start()
     {
         s_Instance = this;
+
+        GetPlayerPref();
+
+        SetLevel();
     }
 
     void Update()
@@ -26,5 +45,52 @@ public class GameManager : MonoBehaviour
     public void UpdatePoints(int pts)
     {
         this._uiManager.UpdatePoints(pts);
+    }
+
+    private void GetPlayerPref()
+    {
+        GetLevel();
+        GetMoney();
+    }
+
+    private void GetLevel()
+    {
+        if (PlayerPrefs.HasKey(this._keyLevel))
+        {
+            this._nextLevel = PlayerPrefs.GetInt(this._keyLevel);
+            this._nextLevelLimit = this._levelMaxLength + (this._incrementLevelMaxLength * (this._nextLevel - 1));
+        }
+        else
+        {
+            this._nextLevel = 1;
+            this._nextLevelLimit = this._levelMaxLength + (this._incrementLevelMaxLength * (this._nextLevel - 1));
+            PlayerPrefs.SetInt(this._keyLevel, 1);
+            PlayerPrefs.Save();
+        }
+    }
+
+    private void GetMoney()
+    {
+        if (PlayerPrefs.HasKey(this._keyMoney))
+        {
+            this._moneyOwned = PlayerPrefs.GetInt(this._keyMoney);
+        }
+        else
+        {
+            this._moneyOwned = 0;
+            PlayerPrefs.SetInt(this._keyMoney, 0);
+            PlayerPrefs.Save();
+        }
+    }
+
+    private void SetLevel()
+    {
+        this._levelManager.SetLevelLength(this._levelMaxLength);
+        this._levelManager.enabled = true;
+    }
+
+    private void SetMainMenu()
+    {
+        this._uiManager.SetMainMenu(this._nextLevel, this._moneyOwned);
     }
 }
