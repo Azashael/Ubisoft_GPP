@@ -24,6 +24,38 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - id: 0
+  - m_Id: 590620149305344
+    m_Localized: 'Game Developper :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 590647018016768
+    m_Localized: Rochelle Charline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 590667570106368
+    m_Localized: 'Police :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 590710976958464
+    m_Localized: 'Depuis le site :
+
+      dafont.com
+
+      Graphiste : 177Studio'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 590804883230720
+    m_Localized: "Ic\xF4nes :"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 590829277302784
+    m_Localized: 'Depuis le site :
+
+      flaticon.com
+
+      Graphiste : Freepik'
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

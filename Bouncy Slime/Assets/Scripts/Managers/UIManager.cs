@@ -1,3 +1,8 @@
+/**
+ * Rochelle Charline
+ * Novembre 2021 
+ * */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,7 +31,6 @@ public class UIManager : MonoBehaviour
     public void SetMainMenu(int level)
     {
         this._menu.SetData(level);
-        this._menu.enabled = true;
     }
 
     public void GoToMainMenu(int level)

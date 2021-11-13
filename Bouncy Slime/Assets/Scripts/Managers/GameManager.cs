@@ -1,3 +1,8 @@
+/**
+ * Rochelle Charline
+ * Novembre 2021 
+ * */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,7 +36,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private string _keyVibration;
     [SerializeField]
-    private int _keySkinPlayer;
+    private string _keySkinPlayer;
 
 
     private int _nextLevel;

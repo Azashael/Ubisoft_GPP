@@ -19,6 +19,30 @@ MonoBehaviour:
     m_Key: LevelDisplay.Text.Int
     m_Metadata:
       m_Items: []
+  - m_Id: 590620149305344
+    m_Key: UI/Prefab Mode in Context/UI/MainPanel/Credits/Panel/Texts/GameDev
+    m_Metadata:
+      m_Items: []
+  - m_Id: 590647018016768
+    m_Key: UI/Prefab Mode in Context/UI/MainPanel/Credits/Panel/Texts/GameDev 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 590667570106368
+    m_Key: UI/Prefab Mode in Context/UI/MainPanel/Credits/Panel/Texts/Font
+    m_Metadata:
+      m_Items: []
+  - m_Id: 590710976958464
+    m_Key: UI/Prefab Mode in Context/UI/MainPanel/Credits/Panel/Texts/Font 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 590804883230720
+    m_Key: UI/Prefab Mode in Context/UI/MainPanel/Credits/Panel/Texts/Icones
+    m_Metadata:
+      m_Items: []
+  - m_Id: 590829277302784
+    m_Key: UI/Prefab Mode in Context/UI/MainPanel/Credits/Panel/Texts/Icones 1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

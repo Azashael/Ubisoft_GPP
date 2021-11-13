@@ -24,6 +24,38 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - id: 0
+  - m_Id: 590620149305344
+    m_Localized: 'Game Developper :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 590647018016768
+    m_Localized: Rochelle Charline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 590667570106368
+    m_Localized: 'Font :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 590710976958464
+    m_Localized: 'From website :
+
+      dafont.com
+
+      Author : 177Studio'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 590804883230720
+    m_Localized: 'Icons :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 590829277302784
+    m_Localized: 'From website :
+
+      flaticon.com
+
+      Author : Freepik'
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:
