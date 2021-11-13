@@ -20,27 +20,35 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 590620149305344
-    m_Key: UI/Prefab Mode in Context/UI/MainPanel/Credits/Panel/Texts/GameDev
+    m_Key: Credit.GameDevTitle
     m_Metadata:
       m_Items: []
   - m_Id: 590647018016768
-    m_Key: UI/Prefab Mode in Context/UI/MainPanel/Credits/Panel/Texts/GameDev 1
+    m_Key: Credit.GameDevName
     m_Metadata:
       m_Items: []
   - m_Id: 590667570106368
-    m_Key: UI/Prefab Mode in Context/UI/MainPanel/Credits/Panel/Texts/Font
+    m_Key: Credit.FontTitle
     m_Metadata:
       m_Items: []
   - m_Id: 590710976958464
-    m_Key: UI/Prefab Mode in Context/UI/MainPanel/Credits/Panel/Texts/Font 1
+    m_Key: Credit.FontName
     m_Metadata:
       m_Items: []
   - m_Id: 590804883230720
-    m_Key: UI/Prefab Mode in Context/UI/MainPanel/Credits/Panel/Texts/Icones
+    m_Key: Credit.IconsTitle
     m_Metadata:
       m_Items: []
   - m_Id: 590829277302784
-    m_Key: UI/Prefab Mode in Context/UI/MainPanel/Credits/Panel/Texts/Icones 1
+    m_Key: Credit.IconsNames
+    m_Metadata:
+      m_Items: []
+  - m_Id: 636937080819712
+    m_Key: Defeat.Retry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 637109781286912
+    m_Key: Victory.Congrats
     m_Metadata:
       m_Items: []
   m_Metadata:

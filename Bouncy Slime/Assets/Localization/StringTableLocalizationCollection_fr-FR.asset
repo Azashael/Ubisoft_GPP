@@ -56,6 +56,14 @@ MonoBehaviour:
       Graphiste : Freepik'
     m_Metadata:
       m_Items: []
+  - m_Id: 637109781286912
+    m_Localized: Bravo !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 636937080819712
+    m_Localized: "R\xE9essayez !"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

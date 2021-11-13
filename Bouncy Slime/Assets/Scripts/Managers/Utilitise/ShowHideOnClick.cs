@@ -12,6 +12,9 @@ public class ShowHideOnClick : MonoBehaviour
     [Header("Object to show/hide")]
     [SerializeField]
     private GameObject _object;
+    [Header("Object to hide")]
+    [SerializeField]
+    private GameObject _hide;
 
     public void Start()
     {
@@ -21,5 +24,6 @@ public class ShowHideOnClick : MonoBehaviour
     public void OnClick()
     {
         this._object.SetActive(!this._object.activeSelf);
+        this._hide.SetActive(false);
     }
 }
