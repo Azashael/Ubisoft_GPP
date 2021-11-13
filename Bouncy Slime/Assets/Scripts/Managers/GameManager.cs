@@ -58,13 +58,10 @@ public class GameManager : MonoBehaviour
         SetMainMenu();
 
         PauseGame();
-
-        Debug.Log("Start GameManager");
     }
 
     public void InversePauseGame()
     {
-        Debug.Log("InversePauseGame : " + this._pauseGame);
         if(this._pauseGame)
         {
             ResumeGame();
@@ -77,14 +74,12 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        Debug.Log("PauseGame");
         this._pauseGame = true;
         Time.timeScale = 0;
     }
 
     public void ResumeGame()
     {
-        Debug.Log("ResumeGame");
         this._pauseGame = false;
         Time.timeScale = 1;
     }
