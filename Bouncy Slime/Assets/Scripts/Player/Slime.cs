@@ -41,6 +41,16 @@ public class Slime : MonoBehaviour
         }
     }
 
+    public void StartMoving()
+    {
+        this._animator.SetBool(this._animationGoParameterName, true);
+    }
+
+    public void StopMoving()
+    {
+        this._animator.SetBool(this._animationGoParameterName, false);
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == this._jellyTag)
@@ -95,18 +105,39 @@ public class Slime : MonoBehaviour
     public void Defeat()
     {
         GameManager.instance.Defeat(this._countJump);
-        this._animator.Rebind();
-        transform.position = new Vector3(0, 1, 0);
+        ResetAnimation();
+        ResetCounter();
     }
 
     public void Victory()
     {
         GameManager.instance.Victory();
+        ResetAnimation();
+        ResetCounter();
+    }
+
+    private void ResetCounter()
+    {
+        this._countCollider = 0;
+        this._countJelly = 0;
+        this._countJump = 0;
+    }
+
+    private void ResetAnimation()
+    {
+        this._animator.Rebind();
+        transform.position = new Vector3(0, 1, 0);
     }
 
     private void CountPoints()
     {
         this._countJump++;
         GameManager.instance.UpdatePoints(this._countJump);
+    }
+
+    void OnBounce()
+    {
+        if (GameManager.instance.Vibration)
+            Handheld.Vibrate();
     }
 }

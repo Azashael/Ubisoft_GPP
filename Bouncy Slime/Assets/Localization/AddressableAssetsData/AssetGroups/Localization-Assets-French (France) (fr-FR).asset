@@ -17,8 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: a66acb9d2de8c5547ac8b1c6d5ad35e7
   m_SerializeEntries:
-  - m_GUID: e87352ba6411ae04c87a0cd0730ed7f8
-    m_Address: icons8-france-96
+  - m_GUID: c5bdd1f7e148e7d43958686467c64009
+    m_Address: hot-air-balloon
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-fr-FR

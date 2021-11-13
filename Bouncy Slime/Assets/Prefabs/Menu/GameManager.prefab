@@ -45,6 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiManager: {fileID: 0}
   _levelManager: {fileID: 0}
+  _player: {fileID: 0}
   _levelMaxLength: 100
   _incrementLevelMaxLength: 5
   _keyLevel: level

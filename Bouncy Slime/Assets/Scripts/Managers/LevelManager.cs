@@ -29,7 +29,6 @@ public class LevelManager : MonoBehaviour
     private PieceOfPath[] _easyPrefabs;
 
     private List<PieceOfPath> _currentPath;
-    [SerializeField]
     private int _maxLengthJump;
     private int _lengthJumpPath = 0;
     private bool _generate = false;
@@ -130,6 +129,8 @@ public class LevelManager : MonoBehaviour
         this._currentPath.Clear();
         this._generate = false;
         this._move = false;
+        this._lengthJumpPath = 0;
+        this._maxLengthJump = 0;
     }
 
     public void StartPath()

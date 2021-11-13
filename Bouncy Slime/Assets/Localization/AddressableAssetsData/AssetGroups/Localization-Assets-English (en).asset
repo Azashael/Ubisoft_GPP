@@ -17,8 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 5c0f26a308e7e5341a9e6c14545b1c26
   m_SerializeEntries:
-  - m_GUID: c883744dba090dd40853210fe8f2defc
-    m_Address: icons8-great-britain-96
+  - m_GUID: 279c019ef45807245b8b8838ef354aac
+    m_Address: hot-air-balloon(1)
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en

@@ -13,10 +13,14 @@ public class UIManager : MonoBehaviour
     private GameOverDisplay _gameOver;
     [SerializeField]
     private VictoryDisplay _victory;
+    [SerializeField]
+    private GameObject _credits;
+    [SerializeField]
+    private GameObject _shop;
 
     public void UpdatePoints(int pts)
     {
-        this._inGame.UpdatePoints(pts);
+        this._inGame.UpdatePoints(pts); 
     }
 
     public void SetMainMenu(int level)
@@ -32,6 +36,7 @@ public class UIManager : MonoBehaviour
         this._gameOver.gameObject.SetActive(false);
         this._inGame.gameObject.SetActive(false);
         this._victory.gameObject.SetActive(false);
+        this._credits.gameObject.SetActive(false);
     }
 
     public void GoToInGameMenu(int objective)
@@ -41,6 +46,7 @@ public class UIManager : MonoBehaviour
         this._gameOver.gameObject.SetActive(false);
         this._inGame.gameObject.SetActive(true);
         this._victory.gameObject.SetActive(false);
+        this._credits.gameObject.SetActive(false);
     }
 
     public void GoToGameOverMenu(int score, int objective)
@@ -49,6 +55,7 @@ public class UIManager : MonoBehaviour
         this._menu.gameObject.SetActive(false);
         this._gameOver.gameObject.SetActive(true);
         this._inGame.gameObject.SetActive(false);
+        this._credits.gameObject.SetActive(false);
         this._victory.gameObject.SetActive(false);
     }
 
@@ -57,6 +64,16 @@ public class UIManager : MonoBehaviour
         this._menu.gameObject.SetActive(false);
         this._gameOver.gameObject.SetActive(false);
         this._inGame.gameObject.SetActive(false);
+        this._credits.gameObject.SetActive(false);
         this._victory.gameObject.SetActive(true);
+    }
+
+    public void GoToCredits()
+    {
+        this._menu.gameObject.SetActive(false);
+        this._gameOver.gameObject.SetActive(false);
+        this._inGame.gameObject.SetActive(false);
+        this._victory.gameObject.SetActive(false);
+        this._credits.gameObject.SetActive(true);
     }
 }
