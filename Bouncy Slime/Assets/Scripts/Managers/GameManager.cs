@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
 
     private void GetLevel()
     {
-        if (PlayerPrefs.HasKey(this._keyLevel))
+         if (PlayerPrefs.HasKey(this._keyLevel))
         {
             this._nextLevel = PlayerPrefs.GetInt(this._keyLevel);
             this._nextLevelLimit = this._levelMaxLength + (this._incrementLevelMaxLength * (this._nextLevel - 1));

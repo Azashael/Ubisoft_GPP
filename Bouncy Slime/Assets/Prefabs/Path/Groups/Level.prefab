@@ -107,16 +107,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _test: 0
-  _prefabTest: {fileID: 4139775074235640948, guid: 67d3dcbdea24045459a571924f0d7e88, type: 3}
+  _prefabTest: {fileID: 8449673081899644428, guid: edbe8713f12106548ae3aaf7b1c53710, type: 3}
   _speedScroll: 6
-  _minTiles: 3
+  _minLengthCurrent: 120
   _limitZ: -20
   _pathContainer: {fileID: 8792598747096946631}
-  _startPath: {fileID: 8392249830825032789, guid: 71b6633bc05b16f47be0c2885f0fbc38, type: 3}
-  _endPath: {fileID: 8913630755950099669, guid: 119a6c3abc2c69b4998309181c89dc67, type: 3}
+  _startPath: {fileID: -2780936786331165965, guid: 344915502bbfe1c42b828dcbc8a4341d, type: 3}
+  _endPath: {fileID: 8492558972864174120, guid: 119a6c3abc2c69b4998309181c89dc67, type: 3}
   _easyPrefabs:
-  - {fileID: 4139775074235640948, guid: 67d3dcbdea24045459a571924f0d7e88, type: 3}
-  _maxLengthJump: 45
+  - {fileID: 5429668685435930059, guid: 772224bb0d5557c45b825b96f20a9c19, type: 3}
 --- !u!1001 &4706228696612380417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124,6 +123,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8792598747584678501}
     m_Modifications:
+    - target: {fileID: 4272359039249669484, guid: f36e1e36fa80e26478e976c9587f466c, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4272359039631662140, guid: f36e1e36fa80e26478e976c9587f466c, type: 3}
       propertyPath: m_Name
       value: PlayerX

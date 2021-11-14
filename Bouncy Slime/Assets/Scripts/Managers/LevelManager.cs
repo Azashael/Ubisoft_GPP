@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private float _speedScroll;
     [SerializeField]
-    private uint _minTiles;
+    private uint _minLengthCurrent;
     [SerializeField]
     private int _limitZ;
 
@@ -38,6 +38,7 @@ public class LevelManager : MonoBehaviour
     private int _lengthJumpPath = 0;
     private bool _generate = false;
     private bool _move = false;
+    private int _lengthCurrent = 0;
 
     private void FixedUpdate()
     {
@@ -69,6 +70,7 @@ public class LevelManager : MonoBehaviour
     {
         if (this._currentPath[0].transform.position.z + this._currentPath[0].Length < this._limitZ)
         {
+            this._lengthCurrent -= this._currentPath[0].Length;
             Destroy(this._currentPath[0].gameObject);
             this._currentPath.RemoveAt(0);
         }
@@ -78,9 +80,13 @@ public class LevelManager : MonoBehaviour
     {
         _currentPath = new List<PieceOfPath>();
         GameObject startTile = Instantiate(this._startPath.gameObject, this._pathContainer.transform);
-        startTile.transform.position = new Vector3(0, 0, -.5f);
+        this._lengthCurrent += this._startPath.Length;
+        startTile.transform.position = new Vector3(0, 0, 0);
         this._currentPath.Add(startTile.GetComponent<PieceOfPath>());
-        GeneratePath();
+        while (this._lengthCurrent < this._minLengthCurrent)
+        {
+            GeneratePath();
+        }
     }
 
     private void GenerateNext()
@@ -101,9 +107,10 @@ public class LevelManager : MonoBehaviour
 
     private void GeneratePath()
     {
-        if(this._currentPath.Count < this._minTiles)
+        if(this._lengthCurrent < this._minLengthCurrent)
         {
             GameObject newTile = Instantiate(this._prefabTest.gameObject, this._pathContainer.transform);
+            this._lengthCurrent += this._prefabTest.Length;
             newTile.transform.position = this._currentPath[this._currentPath.Count - 1].transform.position + new Vector3 (0, 0, this._currentPath[this._currentPath.Count - 1].Length);
             PieceOfPath popNewTile = newTile.GetComponent<PieceOfPath>();
             this._lengthJumpPath += popNewTile.JumpCount;
@@ -136,6 +143,7 @@ public class LevelManager : MonoBehaviour
         this._move = false;
         this._lengthJumpPath = 0;
         this._maxLengthJump = 0;
+        this._lengthCurrent = 0;
     }
 
     public void StartPath()

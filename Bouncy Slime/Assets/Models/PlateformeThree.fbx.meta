@@ -1,8 +1,17 @@
 fileFormatVersion: 2
-guid: 51a290138ccfe47468d590efc666f6a2
+guid: dd2ac87215e9c074596118a0dc1c98bf
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 2535257958173679403
+    second: PlateformeThree|JellyAction.003
+  - first:
+      74: 4625728257978243326
+    second: PlateformeThree|PlateformeThreeAction
+  - first:
+      74: -621873999094776113
+    second: PlateformeThree|PlateformeThreeAction.001
   externalObjects: {}
   materials:
     materialImportMode: 2
