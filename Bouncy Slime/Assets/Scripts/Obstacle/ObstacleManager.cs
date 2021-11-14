@@ -14,10 +14,10 @@ public class ObstacleManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision ! " + other.gameObject.tag);
+        Debug.Log("Collision ! Me : " + this.tag + " ; Other :" + other.gameObject.tag);
         if (other.gameObject.tag == this._tagPlayer)
         { 
             this._animator.SetTrigger(this._animationParameter);
-        }       
+        }
     }
 }

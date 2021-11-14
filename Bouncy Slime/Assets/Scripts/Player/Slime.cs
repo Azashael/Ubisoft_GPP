@@ -143,6 +143,8 @@ public class Slime : MonoBehaviour
     void OnBounce()
     {
         if (GameManager.instance.Vibration)
-            Handheld.Vibrate();
+        { 
+            Handheld.Vibrate(); 
+        }
     }
 }
