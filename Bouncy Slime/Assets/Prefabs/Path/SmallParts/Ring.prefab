@@ -43,7 +43,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1803270847093914212
 MonoBehaviour:
@@ -60,6 +60,9 @@ MonoBehaviour:
   _animator: {fileID: 1291842349322613699}
   _animationParameter: PassRing
   _tagPlayer: Player
+  _deactivate:
+  - {fileID: 8009133303538182419}
+  - {fileID: 2895652029680408653}
   _center: 1
 --- !u!1 &2895652029680408653
 GameObject:
@@ -70,8 +73,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7309721831543688223}
-  - component: {fileID: 5214503848754334647}
   - component: {fileID: 7668939734579338421}
+  - component: {fileID: 6254856885047354960}
   m_Layer: 8
   m_Name: Left
   m_TagString: Untagged
@@ -93,20 +96,6 @@ Transform:
   m_Father: {fileID: 7897787473411973585}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &5214503848754334647
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2895652029680408653}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.15
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7668939734579338421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +111,22 @@ MonoBehaviour:
   _animator: {fileID: 1291842349322613699}
   _animationParameter: TouchRingLeft
   _tagPlayer: Player
+  _deactivate:
+  - {fileID: 1006677947274847141}
   _center: 0
+--- !u!65 &6254856885047354960
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2895652029680408653}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 1, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7408777012379155307
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,8 +240,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2246548078861407698}
-  - component: {fileID: 8555179805466687147}
   - component: {fileID: 2227523335043840793}
+  - component: {fileID: 8474775816411416106}
   m_Layer: 8
   m_Name: Right
   m_TagString: Untagged
@@ -259,20 +263,6 @@ Transform:
   m_Father: {fileID: 7897787473411973585}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &8555179805466687147
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8009133303538182419}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.15
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2227523335043840793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,4 +278,19 @@ MonoBehaviour:
   _animator: {fileID: 1291842349322613699}
   _animationParameter: TouchRingRight
   _tagPlayer: Player
+  _deactivate:
+  - {fileID: 1006677947274847141}
   _center: 0
+--- !u!65 &8474775816411416106
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8009133303538182419}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 1, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0}

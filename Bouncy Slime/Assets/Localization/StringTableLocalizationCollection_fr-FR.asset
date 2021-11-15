@@ -64,6 +64,10 @@ MonoBehaviour:
     m_Localized: "R\xE9essayez !"
     m_Metadata:
       m_Items: []
+  - m_Id: 1437551486455808
+    m_Localized: Apparences
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:
