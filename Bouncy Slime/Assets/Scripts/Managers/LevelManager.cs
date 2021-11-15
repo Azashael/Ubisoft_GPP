@@ -5,6 +5,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -39,6 +40,7 @@ public class LevelManager : MonoBehaviour
     private bool _generate = false;
     private bool _move = false;
     private int _lengthCurrent = 0;
+    private double _distanceTravelled = 0;
 
     private void FixedUpdate()
     {
@@ -57,6 +59,9 @@ public class LevelManager : MonoBehaviour
         foreach (PieceOfPath segment in this._currentPath)
         {
             segment.transform.Translate((-Vector3.forward * Time.deltaTime) * this._speedScroll);
+            Debug.Log("Moving : " + ((-Vector3.forward * Time.deltaTime) * this._speedScroll).ToString());
+            this._distanceTravelled += 1 * Time.deltaTime * this._speedScroll;
+            Debug.Log("Distance : " + this._distanceTravelled);
         }
     }
 
@@ -144,6 +149,7 @@ public class LevelManager : MonoBehaviour
         this._lengthJumpPath = 0;
         this._maxLengthJump = 0;
         this._lengthCurrent = 0;
+        this._distanceTravelled = 0;
     }
 
     public void StartPath()

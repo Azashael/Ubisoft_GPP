@@ -6,11 +6,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 public class GameManager : MonoBehaviour
 {
     static public GameManager instance { get { return s_Instance; } }
-
     public bool PauseGameValue { get => this._pauseGame; }
     public bool Vibration { get => _vibration; }
 
@@ -37,15 +38,32 @@ public class GameManager : MonoBehaviour
     private string _keyVibration;
     [SerializeField]
     private string _keySkinPlayer;
+    [SerializeField]
+    private string _keyLocale;
 
-
+    // Niveau Actuel
     private int _nextLevel;
     private int _nextLevelLimit;
+
+    // Données joueur
     private int _moneyOwned;
     private int _skinPlayer = 0;
 
+    // Option Joueur
     private bool _pauseGame = true;
     private bool _vibration;
+    private string _locale;
+
+    // Statistique Niveau en cours
+    private int _nbJump = 0;
+    private int _nbDoubleJump = 0;
+    private int _nbTripleJump = 0;
+    private int _nbJelly = 0;
+    private int _nbRings = 0;
+    private int _nbTouchedRing = 0;
+    private double _distance = 0;
+
+    private int _nbRingCombo = 0;
 
     void Start()
     {
@@ -95,6 +113,38 @@ public class GameManager : MonoBehaviour
     public void UpdatePoints(int pts)
     {
         this._uiManager.UpdatePoints(pts);
+    }
+
+    public void SetStatJump(int j, int dj, int tj)
+    {
+        this._nbJump = j;
+        this._nbDoubleJump = dj;
+        this._nbTripleJump = tj;
+        this._nbJelly = dj + tj;
+    }
+
+    public void UpdateRingPoints()
+    {
+        this._nbRingCombo++;
+        this._nbRings++;
+    }
+
+    public void UpdateRingTouchedCount()
+    {
+        this._nbRingCombo = 0;
+        this._nbTouchedRing++;
+    }
+
+    private void ResetStats()
+    {
+        this._nbJump = 0;
+        this._nbDoubleJump = 0;
+        this._nbTripleJump = 0;
+        this._nbJelly = 0;
+        this._nbRings = 0;
+        this._nbTouchedRing = 0;
+        this._distance = 0;
+        this._nbRingCombo = 0;
     }
 
     private void GetPlayerPref()
@@ -172,6 +222,33 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    private void GetLocale()
+    {
+        if (PlayerPrefs.HasKey(this._keyLocale))
+        {
+            this._locale = PlayerPrefs.GetString(this._keyLocale);
+        }
+        else
+        {
+            this._vibration = true;
+            PlayerPrefs.SetString(this._keyLocale, this._locale);
+            PlayerPrefs.Save();
+        }
+    }
+
+    private void SaveLocale()
+    {
+        PlayerPrefs.SetString(this._keyLocale, this._locale);
+        PlayerPrefs.Save();
+    }
+
+    private void SetLocale(Locale l)
+    {
+        this._locale = l.ToString();
+        PlayerPrefs.SetString(this._keyLocale, this._locale);
+        PlayerPrefs.Save();
+    }
+
     public void ReverseVibration()
     {
         this._vibration = !this._vibration;
@@ -187,26 +264,28 @@ public class GameManager : MonoBehaviour
 
     private void SetMainMenu()
     {
-        this._uiManager.SetMainMenu(this._nextLevel);
+        this._uiManager.GoToMainMenu(this._nextLevel);
     }
 
     public void Victory()
     {
-        this._uiManager.GoToVictoryMenu();
+        this._uiManager.GoToVictoryDefeatMenu(true, this._nbJump, this._nbDoubleJump, this._nbTripleJump, this._nbJelly, this._nbRings, this._nbTouchedRing, this._moneyOwned);
         this._levelManager.EndLevel();
         this._nextLevel++;
         this._nextLevelLimit = this._levelMaxLength + (this._incrementLevelMaxLength * (this._nextLevel - 1));
         SaveLevel();
         SetLevel();
         PauseGame();
+        ResetStats();
     }
 
-    public void Defeat(int score)
+    public void Defeat()
     {
-        this._uiManager.GoToGameOverMenu(score, this._nextLevelLimit);
+        this._uiManager.GoToVictoryDefeatMenu(false, this._nbJump, this._nbDoubleJump, this._nbTripleJump, this._nbJelly, this._nbRings, this._nbTouchedRing, this._moneyOwned);
         this._levelManager.EndLevel();
         SetLevel();
         PauseGame();
+        ResetStats();
     }
 
     public void ReturnToMainMenu()

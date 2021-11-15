@@ -31,7 +31,11 @@ public class Slime : MonoBehaviour
 
     private int _countCollider = 0;
     private int _countJelly = 0;
+
+    // Stats
     private int _countJump = 0;
+    private int _countDoubleJump = 0;
+    private int _countTripleJump = 0;
 
     private void Update()
     {
@@ -109,13 +113,15 @@ public class Slime : MonoBehaviour
 
     public void Defeat()
     {
-        GameManager.instance.Defeat(this._countJump);
+        UpdateStats();
+        GameManager.instance.Defeat();
         ResetAnimation();
         ResetCounter();
     }
 
     public void Victory()
     {
+        UpdateStats();
         GameManager.instance.Victory();
         ResetAnimation();
         ResetCounter();
@@ -125,7 +131,6 @@ public class Slime : MonoBehaviour
     {
         this._countCollider = 0;
         this._countJelly = 0;
-        this._countJump = 0;
     }
 
     private void ResetAnimation()
@@ -134,17 +139,37 @@ public class Slime : MonoBehaviour
         transform.position = new Vector3(0, 1, 0);
     }
 
-    private void CountPoints()
-    {
-        this._countJump++;
-        GameManager.instance.UpdatePoints(this._countJump);
-    }
-
     void OnBounce()
     {
         if (GameManager.instance.Vibration)
         { 
             Handheld.Vibrate(); 
+        }
+    }
+
+    public void UpdateStats()
+    {
+        GameManager.instance.SetStatJump(this._countJump, this._countDoubleJump, this._countTripleJump);
+        this._countJump = 0;
+        this._countDoubleJump = 0;
+        this._countTripleJump = 0;
+    }
+
+    public void OnJump(int j)
+    {
+        switch(j)
+        {
+            case 1:
+                this._countJump++;
+                break;
+            case 2:
+                this._countDoubleJump++;
+                break;
+            case 3:
+                this._countJump++;
+                break;
+            default:
+                break;
         }
     }
 }

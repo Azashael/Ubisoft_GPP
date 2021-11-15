@@ -6,17 +6,16 @@ public class ObstacleManager : MonoBehaviour
 {
     [Header("Animation")]
     [SerializeField]
-    private Animator _animator;
+    protected Animator _animator;
     [SerializeField]
-    private string _animationParameter;
+    protected string _animationParameter;
     [SerializeField]
-    private string _tagPlayer;
+    protected string _tagPlayer;
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision ! Me : " + this.tag + " ; Other :" + other.gameObject.tag);
         if (other.gameObject.tag == this._tagPlayer)
-        { 
+        {
             this._animator.SetTrigger(this._animationParameter);
         }
     }

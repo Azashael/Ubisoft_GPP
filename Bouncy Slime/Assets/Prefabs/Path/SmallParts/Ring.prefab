@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7005181569888766886}
   - component: {fileID: 2919794887171507246}
-  - component: {fileID: 3617710859157950484}
-  m_Layer: 0
+  - component: {fileID: 1803270847093914212}
+  m_Layer: 8
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3617710859157950484
+--- !u!114 &1803270847093914212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,12 +54,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1006677947274847141}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b896272607897b4aa3204c399e0f7f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 562525e5de4041f4cbe65fd171765d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 1291842349322613699}
   _animationParameter: PassRing
   _tagPlayer: Player
+  _center: 1
 --- !u!1 &2895652029680408653
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,8 +71,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7309721831543688223}
   - component: {fileID: 5214503848754334647}
-  - component: {fileID: 8111946860398772467}
-  m_Layer: 0
+  - component: {fileID: 7668939734579338421}
+  m_Layer: 8
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +107,7 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8111946860398772467
+--- !u!114 &7668939734579338421
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,12 +116,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2895652029680408653}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b896272607897b4aa3204c399e0f7f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 562525e5de4041f4cbe65fd171765d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 1291842349322613699}
-  _animationParameter: TouchRing
+  _animationParameter: TouchRingLeft
   _tagPlayer: Player
+  _center: 0
 --- !u!1 &7408777012379155307
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +135,7 @@ GameObject:
   - component: {fileID: 6500181118339198580}
   - component: {fileID: 9066237532875774654}
   - component: {fileID: 1291842349322613699}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,8 +237,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2246548078861407698}
   - component: {fileID: 8555179805466687147}
-  - component: {fileID: 4395197951428984719}
-  m_Layer: 0
+  - component: {fileID: 2227523335043840793}
+  m_Layer: 8
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +273,7 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4395197951428984719
+--- !u!114 &2227523335043840793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -280,9 +282,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8009133303538182419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b896272607897b4aa3204c399e0f7f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 562525e5de4041f4cbe65fd171765d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 1291842349322613699}
-  _animationParameter: TouchRing
+  _animationParameter: TouchRingRight
   _tagPlayer: Player
+  _center: 0

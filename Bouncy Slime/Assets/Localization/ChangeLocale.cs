@@ -12,6 +12,6 @@ public class ChangeLocale : MonoBehaviour
 {
     public void OnClick(UnityEngine.Localization.Locale l)
     {
-        LocalizationSettings.SelectedLocale = l;
+        LocalizationSettings.Instance.SetSelectedLocale(l);
     }
 }

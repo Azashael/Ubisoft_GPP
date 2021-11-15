@@ -15,8 +15,8 @@ MonoBehaviour:
   m_TableCollectionName: TableLocalizationCollection
   m_TableCollectionNameGuidString: ae00986641df4a745a369c05d1b4dd76
   m_Entries:
-  - m_Id: 1160097452032
-    m_Key: TestZone/Main Camera/UI/MainPanel/Menu/DownOptions/Button (2)
+  - m_Id: 1383316749176832
+    m_Key: Main/Main Camera/UI/MainPanel/Menu/DownOptions/Localization
     m_Metadata:
       m_Items: []
   m_Metadata:
@@ -30,10 +30,10 @@ MonoBehaviour:
       type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Entries:
-        - m_KeyId: 1160097452032
+        - m_KeyId: 1383316749176832
           m_TableCodes:
-          - en
           - fr-FR
+          - en
         m_TypeString: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
     00000001:

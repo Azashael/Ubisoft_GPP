@@ -6,6 +6,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization.PropertyVariants;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 public class ShowHideOnClick : MonoBehaviour
 {
