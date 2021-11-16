@@ -34,7 +34,6 @@ public class LevelManager : MonoBehaviour
 
     private List<PieceOfPath> _currentPath;
     private int _maxLengthJump;
-    private int _lengthJumpPath = 0;
     private bool _generate = false;
     private bool _move = false;
     private int _lengthCurrent = 0;
@@ -150,7 +149,6 @@ public class LevelManager : MonoBehaviour
         this._currentPath.Clear();
         this._generate = false;
         this._move = false;
-        this._lengthJumpPath = 0;
         this._maxLengthJump = 0;
         this._lengthCurrent = 0;
         this._distanceTravelled = 0;
