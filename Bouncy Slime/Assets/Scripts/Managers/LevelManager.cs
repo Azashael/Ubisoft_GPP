@@ -10,11 +10,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [Header("Test")]
-    [SerializeField]
-    private bool _test;
-    [SerializeField]
-    private PieceOfPath _prefabTest;
+    [Header("Config")]
     [SerializeField]
     private float _speedScroll;
     [SerializeField]
@@ -32,7 +28,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private PieceOfPath _endPath;
     [SerializeField]
-    private PieceOfPath[] _easyPrefabs;
+    private PieceOfPath[] _pathPrefabs;
     [SerializeField]
     private GameObject[] _skinPlayer;
 
@@ -109,7 +105,7 @@ public class LevelManager : MonoBehaviour
     {
         if (this._generate)
         {
-            if (this._distanceTravelled < this._maxLengthJump)
+            if (GameManager.instance.GetPoints() < this._maxLengthJump)
             {
                 if(this._lengthCurrent < this._minLengthCurrent)
                     GeneratePath();
@@ -124,8 +120,9 @@ public class LevelManager : MonoBehaviour
 
     private void GeneratePath()
     {
-        GameObject newTile = Instantiate(this._prefabTest.gameObject, this._pathContainer.transform);
-        this._lengthCurrent += this._prefabTest.Length;
+        PieceOfPath popPref = this._pathPrefabs[UnityEngine.Random.Range(0, this._pathPrefabs.Length)];
+        GameObject newTile = Instantiate(popPref.gameObject, this._pathContainer.transform);
+        this._lengthCurrent += popPref.Length;
         newTile.transform.position = this._currentPath[this._currentPath.Count - 1].transform.position + new Vector3 (0, 0, this._currentPath[this._currentPath.Count - 1].Length);
         PieceOfPath popNewTile = newTile.GetComponent<PieceOfPath>();
         this._currentPath.Add(popNewTile);

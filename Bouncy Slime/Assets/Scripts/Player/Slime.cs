@@ -166,7 +166,7 @@ public class Slime : MonoBehaviour
                 this._countDoubleJump++;
                 break;
             case 3:
-                this._countJump++;
+                this._countTripleJump++;
                 break;
             default:
                 break;

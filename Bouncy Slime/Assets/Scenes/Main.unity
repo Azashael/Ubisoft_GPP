@@ -370,8 +370,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 70
-  field of view: 50
+  far clip plane: 100
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -441,6 +441,10 @@ PrefabInstance:
     - target: {fileID: 1947299269027230678, guid: 2322c1969f4fe084596accbad6d21382, type: 3}
       propertyPath: _levelMaxLength
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1947299269027230678, guid: 2322c1969f4fe084596accbad6d21382, type: 3}
+      propertyPath: _incrementLevelMaxLength
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1947299269027230679, guid: 2322c1969f4fe084596accbad6d21382, type: 3}
       propertyPath: m_RootOrder
@@ -638,8 +642,32 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8792598747584678500, guid: f7e1eb6f422c31b41b0a6b57c4a2de20, type: 3}
       propertyPath: _minLengthCurrent
-      value: 60
+      value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 8792598747584678500, guid: f7e1eb6f422c31b41b0a6b57c4a2de20, type: 3}
+      propertyPath: _pathPrefabs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792598747584678500, guid: f7e1eb6f422c31b41b0a6b57c4a2de20, type: 3}
+      propertyPath: _pathPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 2382377542275467137, guid: 7f75c98433dde6644ae850637e6913d8, type: 3}
+    - target: {fileID: 8792598747584678500, guid: f7e1eb6f422c31b41b0a6b57c4a2de20, type: 3}
+      propertyPath: _pathPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 8449673081899644428, guid: edbe8713f12106548ae3aaf7b1c53710, type: 3}
+    - target: {fileID: 8792598747584678500, guid: f7e1eb6f422c31b41b0a6b57c4a2de20, type: 3}
+      propertyPath: _pathPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 5632752181884122128, guid: 5261490a154eada488bfb825fe246a87, type: 3}
+    - target: {fileID: 8792598747584678500, guid: f7e1eb6f422c31b41b0a6b57c4a2de20, type: 3}
+      propertyPath: _pathPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 8650794563734342295, guid: 8093ad58d1848584997df0280e145d20, type: 3}
+    - target: {fileID: 8792598747584678500, guid: f7e1eb6f422c31b41b0a6b57c4a2de20, type: 3}
+      propertyPath: _pathPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 8230312059857292343, guid: 783c32b4395542648b132d6fd18e78c0, type: 3}
     - target: {fileID: 8792598747584678501, guid: f7e1eb6f422c31b41b0a6b57c4a2de20, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -687,6 +715,10 @@ PrefabInstance:
     - target: {fileID: 8792598747584678502, guid: f7e1eb6f422c31b41b0a6b57c4a2de20, type: 3}
       propertyPath: m_Name
       value: Level
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792598747584678502, guid: f7e1eb6f422c31b41b0a6b57c4a2de20, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7e1eb6f422c31b41b0a6b57c4a2de20, type: 3}

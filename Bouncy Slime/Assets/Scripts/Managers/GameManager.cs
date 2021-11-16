@@ -115,7 +115,15 @@ public class GameManager : MonoBehaviour
     public void UpdatePoints(int pts)
     {
         this._distance = pts;
-        this._uiManager.UpdatePoints(pts + this._bonus);
+        if(pts + this._bonus > this._nextLevelLimit)
+            this._uiManager.UpdatePoints(this._nextLevelLimit);
+        else
+            this._uiManager.UpdatePoints(pts + this._bonus);
+    }
+
+    public int GetPoints()
+    {
+        return this._distance + this._bonus;
     }
 
     public void SetStatJump(int j, int dj, int tj)
@@ -281,7 +289,7 @@ public class GameManager : MonoBehaviour
 
     private void SetLevel()
     {
-        this._levelManager.SetLevelLength(this._levelMaxLength);
+        this._levelManager.SetLevelLength(this._nextLevelLimit);
         this._levelManager.StartPath();
         this._levelManager.gameObject.SetActive(true);
         this._levelManager.ApplySkin();
@@ -297,7 +305,7 @@ public class GameManager : MonoBehaviour
         this._uiManager.GoToVictoryDefeatMenu(true, this._nbJump, this._nbDoubleJump, this._nbTripleJump, this._nbJelly, this._nbRings, this._nbTouchedRing, this._nbRingComboMax);
         this._levelManager.EndLevel();
         this._nextLevel++;
-        this._nextLevelLimit = this._levelMaxLength + (this._incrementLevelMaxLength * (this._nextLevel - 1));
+        this._nextLevelLimit = this._levelMaxLength + (this._incrementLevelMaxLength * this._nextLevel);
         SaveLevel();
         SetLevel();
         PauseGame();
