@@ -177,12 +177,12 @@ public class GameManager : MonoBehaviour
          if (PlayerPrefs.HasKey(this._keyLevel))
         {
             this._nextLevel = PlayerPrefs.GetInt(this._keyLevel);
-            this._nextLevelLimit = this._levelMaxLength + (this._incrementLevelMaxLength * (this._nextLevel - 1));
+            this._nextLevelLimit = this._levelMaxLength + (this._incrementLevelMaxLength * this._nextLevel);
         }
         else
         {
             this._nextLevel = 1;
-            this._nextLevelLimit = this._levelMaxLength + (this._incrementLevelMaxLength * (this._nextLevel - 1));
+            this._nextLevelLimit = this._levelMaxLength + (this._incrementLevelMaxLength * this._nextLevel);
             SaveLevel();
         }
     }
