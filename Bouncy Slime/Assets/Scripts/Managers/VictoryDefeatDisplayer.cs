@@ -24,7 +24,7 @@ public class VictoryDefeatDisplayer : MonoBehaviour
     [SerializeField]
     private Text _textTouchedRings;
     [SerializeField]
-    private Text _money;
+    private Text _combo;
     [Header("Victory")]
     [SerializeField]
     private GameObject _victoryTitle;
@@ -50,6 +50,6 @@ public class VictoryDefeatDisplayer : MonoBehaviour
         this._textJelly.text = jl.ToString();
         this._textRings.text = r.ToString();
         this._textTouchedRings.text = tr.ToString();
-        this._money.text = m.ToString();
+        this._combo.text = m.ToString();
     }
 }

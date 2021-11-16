@@ -55,6 +55,34 @@ MonoBehaviour:
     m_Key: Skins.Title
     m_Metadata:
       m_Items: []
+  - m_Id: 1708305402712064
+    m_Key: VictoryDefeat.Jump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1708403880775680
+    m_Key: VictoryDefeat.DoubleJump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1708491688529920
+    m_Key: VictoryDefeat.TripleJump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1708593698197504
+    m_Key: VictoryDefeat.Jelly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1708800619991040
+    m_Key: VictoryDefeat.Ring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1709021496233984
+    m_Key: VictoryDefeat.RingTouched
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1709105554280448
+    m_Key: VictoryDefeat.Combo
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

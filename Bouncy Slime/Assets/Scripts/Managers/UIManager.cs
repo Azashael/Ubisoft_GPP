@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour
         this._menu.gameObject.SetActive(true);
         this._inGame.gameObject.SetActive(false);
         this._victorydefeat.gameObject.SetActive(false);
+        this._shop.gameObject.SetActive(false);
         this._credits.gameObject.SetActive(false);
     }
 
@@ -43,6 +44,7 @@ public class UIManager : MonoBehaviour
         this._menu.gameObject.SetActive(false);
         this._inGame.gameObject.SetActive(true);
         this._victorydefeat.gameObject.SetActive(false);
+        this._shop.gameObject.SetActive(false);
         this._credits.gameObject.SetActive(false);
     }
 
@@ -53,6 +55,7 @@ public class UIManager : MonoBehaviour
         this._menu.gameObject.SetActive(false);
         this._inGame.gameObject.SetActive(false);
         this._credits.gameObject.SetActive(false);
+        this._shop.gameObject.SetActive(false);
         this._victorydefeat.gameObject.SetActive(true);
     }
 
@@ -62,5 +65,15 @@ public class UIManager : MonoBehaviour
         this._victorydefeat.gameObject.SetActive(false);
         this._inGame.gameObject.SetActive(false);
         this._credits.gameObject.SetActive(true);
+        this._shop.gameObject.SetActive(false);
+    }
+
+    public void GoToSkinMenu()
+    {
+        this._shop.gameObject.SetActive(true);
+        this._menu.gameObject.SetActive(false);
+        this._inGame.gameObject.SetActive(false);
+        this._victorydefeat.gameObject.SetActive(false);
+        this._credits.gameObject.SetActive(false);
     }
 }

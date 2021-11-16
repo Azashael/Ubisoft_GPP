@@ -68,6 +68,36 @@ MonoBehaviour:
     m_Localized: Apparences
     m_Metadata:
       m_Items: []
+  - m_Id: 1708305402712064
+    m_Localized: 'Saut :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1708403880775680
+    m_Localized: 'Double saut :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1708491688529920
+    m_Localized: 'Triple saut :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1708593698197504
+    m_Localized: "Jelly \xE9cras\xE9e :"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1708800619991040
+    m_Localized: "Cerceau\ntravers\xE9 :"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1709021496233984
+    m_Localized: "Cerceau\ntouch\xE9 :"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1709105554280448
+    m_Localized: 'Max combo
+
+      cerceau :'
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

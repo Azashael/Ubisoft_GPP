@@ -46,9 +46,10 @@ MonoBehaviour:
   _uiManager: {fileID: 0}
   _levelManager: {fileID: 0}
   _player: {fileID: 0}
-  _levelMaxLength: 20
+  _levelMaxLength: 40
   _incrementLevelMaxLength: 0
   _keyLevel: level
   _keyMoney: money
   _keyVibration: vibration
   _keySkinPlayer: skinPlayer
+  _keyLocale: 

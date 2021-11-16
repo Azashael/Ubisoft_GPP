@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     static public GameManager instance { get { return s_Instance; } }
     public bool PauseGameValue { get => this._pauseGame; }
     public bool Vibration { get => _vibration; }
+    public int SkinPlayer { get => _skinPlayer; }
 
     static protected GameManager s_Instance;
 
@@ -46,7 +47,6 @@ public class GameManager : MonoBehaviour
     private int _nextLevelLimit;
 
     // Données joueur
-    private int _moneyOwned;
     private int _skinPlayer = 0;
 
     // Option Joueur
@@ -61,9 +61,11 @@ public class GameManager : MonoBehaviour
     private int _nbJelly = 0;
     private int _nbRings = 0;
     private int _nbTouchedRing = 0;
-    private double _distance = 0;
+    private int _distance = 0;
+    private int _bonus = 0;
 
     private int _nbRingCombo = 0;
+    private int _nbRingComboMax = 0;
 
     void Start()
     {
@@ -112,7 +114,8 @@ public class GameManager : MonoBehaviour
 
     public void UpdatePoints(int pts)
     {
-        this._uiManager.UpdatePoints(pts);
+        this._distance = pts;
+        this._uiManager.UpdatePoints(pts + this._bonus);
     }
 
     public void SetStatJump(int j, int dj, int tj)
@@ -127,11 +130,15 @@ public class GameManager : MonoBehaviour
     {
         this._nbRingCombo++;
         this._nbRings++;
+        this._bonus += this._nbRingCombo;
+        UpdatePoints(this._distance);
+        this._nbRingComboMax = (this._nbRingComboMax < this._nbRingCombo) ? this._nbRingCombo : this._nbRingComboMax;
         return this._nbRingCombo;
     }
 
     public void UpdateRingTouchedCount()
     {
+        this._nbRingComboMax = (this._nbRingComboMax < this._nbRingCombo) ? this._nbRingCombo : this._nbRingComboMax;
         this._nbRingCombo = 0;
         this._nbTouchedRing++;
     }
@@ -146,13 +153,15 @@ public class GameManager : MonoBehaviour
         this._nbTouchedRing = 0;
         this._distance = 0;
         this._nbRingCombo = 0;
+        this._bonus = 0;
+        this._nbRingComboMax = 0;
     }
 
     private void GetPlayerPref()
     {
         GetLevel();
-        GetMoney();
         GetVibration();
+        GetSkin();
     }
 
     private void GetLevel()
@@ -173,26 +182,6 @@ public class GameManager : MonoBehaviour
     private void SaveLevel()
     {
         PlayerPrefs.SetInt(this._keyLevel, this._nextLevel);
-        PlayerPrefs.Save();
-    }
-
-    private void GetMoney()
-    {
-        if (PlayerPrefs.HasKey(this._keyMoney))
-        {
-            this._moneyOwned = PlayerPrefs.GetInt(this._keyMoney);
-        }
-        else
-        {
-            this._moneyOwned = 0;
-            PlayerPrefs.SetInt(this._keyMoney, 0);
-            PlayerPrefs.Save();
-        }
-    }
-
-    private void SaveMoney()
-    {
-        PlayerPrefs.SetInt(this._keyMoney, this._moneyOwned);
         PlayerPrefs.Save();
     }
 
@@ -250,10 +239,44 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    private void GetSkin()
+    {
+        if (PlayerPrefs.HasKey(this._keySkinPlayer))
+        {
+            this._skinPlayer = PlayerPrefs.GetInt(this._keySkinPlayer);
+        }
+        else
+        {
+            this._skinPlayer = 0;
+            PlayerPrefs.SetInt(this._keySkinPlayer, this._skinPlayer);
+            PlayerPrefs.Save();
+        }
+    }
+
+    private void SaveSkin()
+    {
+        PlayerPrefs.SetInt(this._keySkinPlayer, this._skinPlayer);
+        PlayerPrefs.Save();
+    }
+
+    private void SetSkin(int s)
+    {
+        this._skinPlayer = s;
+        PlayerPrefs.SetInt(this._keySkinPlayer, this.SkinPlayer);
+        PlayerPrefs.Save();
+    }
+
     public void ReverseVibration()
     {
         this._vibration = !this._vibration;
         SaveVibration();
+    }
+
+    public void SetSkinMenu(int s)
+    {
+        this._skinPlayer = s;
+        SaveSkin();
+        this._levelManager.ApplySkin();
     }
 
     private void SetLevel()
@@ -261,6 +284,7 @@ public class GameManager : MonoBehaviour
         this._levelManager.SetLevelLength(this._levelMaxLength);
         this._levelManager.StartPath();
         this._levelManager.gameObject.SetActive(true);
+        this._levelManager.ApplySkin();
     }
 
     private void SetMainMenu()
@@ -270,7 +294,7 @@ public class GameManager : MonoBehaviour
 
     public void Victory()
     {
-        this._uiManager.GoToVictoryDefeatMenu(true, this._nbJump, this._nbDoubleJump, this._nbTripleJump, this._nbJelly, this._nbRings, this._nbTouchedRing, this._moneyOwned);
+        this._uiManager.GoToVictoryDefeatMenu(true, this._nbJump, this._nbDoubleJump, this._nbTripleJump, this._nbJelly, this._nbRings, this._nbTouchedRing, this._nbRingComboMax);
         this._levelManager.EndLevel();
         this._nextLevel++;
         this._nextLevelLimit = this._levelMaxLength + (this._incrementLevelMaxLength * (this._nextLevel - 1));
@@ -282,7 +306,7 @@ public class GameManager : MonoBehaviour
 
     public void Defeat()
     {
-        this._uiManager.GoToVictoryDefeatMenu(false, this._nbJump, this._nbDoubleJump, this._nbTripleJump, this._nbJelly, this._nbRings, this._nbTouchedRing, this._moneyOwned);
+        this._uiManager.GoToVictoryDefeatMenu(false, this._nbJump, this._nbDoubleJump, this._nbTripleJump, this._nbJelly, this._nbRings, this._nbTouchedRing, this._nbRingComboMax);
         this._levelManager.EndLevel();
         SetLevel();
         PauseGame();

@@ -33,6 +33,8 @@ public class LevelManager : MonoBehaviour
     private PieceOfPath _endPath;
     [SerializeField]
     private PieceOfPath[] _easyPrefabs;
+    [SerializeField]
+    private GameObject[] _skinPlayer;
 
     private List<PieceOfPath> _currentPath;
     private int _maxLengthJump;
@@ -54,15 +56,24 @@ public class LevelManager : MonoBehaviour
         GenerateNext();
     }
 
+    public void ApplySkin()
+    {
+        foreach(GameObject go in this._skinPlayer)
+        {
+            go.SetActive(false);
+        }
+        this._skinPlayer[GameManager.instance.SkinPlayer].SetActive(true);
+    }
+
     private void MoveTiles()
     {
+        Vector3 moves = (-Vector3.forward * Time.deltaTime) * this._speedScroll;
         foreach (PieceOfPath segment in this._currentPath)
         {
-            segment.transform.Translate((-Vector3.forward * Time.deltaTime) * this._speedScroll);
-            Debug.Log("Moving : " + ((-Vector3.forward * Time.deltaTime) * this._speedScroll).ToString());
-            this._distanceTravelled += 1 * Time.deltaTime * this._speedScroll;
-            Debug.Log("Distance : " + this._distanceTravelled);
+            segment.transform.Translate(moves);
         }
+        this._distanceTravelled += (1 * Time.deltaTime * this._speedScroll) / 3;
+        GameManager.instance.UpdatePoints(Convert.ToInt32(Math.Floor(this._distanceTravelled)));
     }
 
     public void StartMoving()
@@ -98,9 +109,10 @@ public class LevelManager : MonoBehaviour
     {
         if (this._generate)
         {
-            if (this._lengthJumpPath < this._maxLengthJump)
+            if (this._distanceTravelled < this._maxLengthJump)
             {
-                GeneratePath();
+                if(this._lengthCurrent < this._minLengthCurrent)
+                    GeneratePath();
             }
             else
             {
@@ -112,15 +124,11 @@ public class LevelManager : MonoBehaviour
 
     private void GeneratePath()
     {
-        if(this._lengthCurrent < this._minLengthCurrent)
-        {
-            GameObject newTile = Instantiate(this._prefabTest.gameObject, this._pathContainer.transform);
-            this._lengthCurrent += this._prefabTest.Length;
-            newTile.transform.position = this._currentPath[this._currentPath.Count - 1].transform.position + new Vector3 (0, 0, this._currentPath[this._currentPath.Count - 1].Length);
-            PieceOfPath popNewTile = newTile.GetComponent<PieceOfPath>();
-            this._lengthJumpPath += popNewTile.JumpCount;
-            this._currentPath.Add(popNewTile);
-        }
+        GameObject newTile = Instantiate(this._prefabTest.gameObject, this._pathContainer.transform);
+        this._lengthCurrent += this._prefabTest.Length;
+        newTile.transform.position = this._currentPath[this._currentPath.Count - 1].transform.position + new Vector3 (0, 0, this._currentPath[this._currentPath.Count - 1].Length);
+        PieceOfPath popNewTile = newTile.GetComponent<PieceOfPath>();
+        this._currentPath.Add(popNewTile);
     }
 
     private void GenerateEnd()
@@ -128,7 +136,6 @@ public class LevelManager : MonoBehaviour
         GameObject newTile = Instantiate(this._endPath.gameObject, this._pathContainer.transform);
         newTile.transform.position = this._currentPath[this._currentPath.Count - 1].transform.position + new Vector3(0, 0, this._currentPath[this._currentPath.Count - 1].Length);
         PieceOfPath popNewTile = newTile.GetComponent<PieceOfPath>();
-        this._lengthJumpPath += popNewTile.JumpCount;
         this._currentPath.Add(popNewTile);
     }
 
