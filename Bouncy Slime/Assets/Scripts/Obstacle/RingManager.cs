@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RingManager : ObstacleManager
 {
@@ -8,6 +9,10 @@ public class RingManager : ObstacleManager
     private GameObject[] _deactivate;
     [SerializeField]
     private bool _center;
+    [SerializeField]
+    private Text _points;
+    [SerializeField]
+    private string _animTextKey;
 
     protected override void OnTriggerEnter(Collider other)
     {
@@ -17,7 +22,8 @@ public class RingManager : ObstacleManager
         }
         if(this._center)
         {
-            GameManager.instance.UpdateRingPoints();
+            this._points.text = "+" + GameManager.instance.UpdateRingPoints().ToString();
+            base._animator.SetTrigger(this._animTextKey);
         }
         else
         {

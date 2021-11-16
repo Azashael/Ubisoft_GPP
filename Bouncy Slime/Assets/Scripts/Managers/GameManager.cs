@@ -123,10 +123,11 @@ public class GameManager : MonoBehaviour
         this._nbJelly = dj + tj;
     }
 
-    public void UpdateRingPoints()
+    public int UpdateRingPoints()
     {
         this._nbRingCombo++;
         this._nbRings++;
+        return this._nbRingCombo;
     }
 
     public void UpdateRingTouchedCount()
