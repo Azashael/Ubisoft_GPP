@@ -18,6 +18,7 @@ public class Slime : MonoBehaviour
     private string _animatioJellyParameterName;
     [SerializeField]
     private string _animationGoParameterName;
+
     [Header("Tags ground")]
     [SerializeField]
     private string _groundTag;
@@ -25,6 +26,7 @@ public class Slime : MonoBehaviour
     private string _jellyTag;
     [SerializeField]
     private string _endTag;
+
     [Header("Rigidbody")]
     [SerializeField]
     private Rigidbody _rb;
@@ -104,9 +106,6 @@ public class Slime : MonoBehaviour
         }
         else if(other.tag == this._endTag)
         {
-            this._animator.SetBool(this._animationGoParameterName, false);
-            this._animator.SetBool(this._animatioJellyParameterName, false);
-            this._animator.SetBool(this._animationFallingParameterName, false);
             Victory();
         }
     }

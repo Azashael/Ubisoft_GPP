@@ -112,6 +112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4272359040093307541}
+  - component: {fileID: 6706383648109932943}
   m_Layer: 6
   m_Name: SlimeY
   m_TagString: Player
@@ -137,6 +138,20 @@ Transform:
   m_Father: {fileID: 4272359039631662141}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6706383648109932943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4272359040093307540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2230636d0e318a74190f69b8d3c658aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _root: {fileID: 4272359039631662130}
+  _wallTag: Wall
 --- !u!1001 &2267083329383605686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -333,6 +348,10 @@ PrefabInstance:
     - target: {fileID: 33537433561172430, guid: f9e92d3235aad2f4f96fa95a99fb6b0e, type: 3}
       propertyPath: m_Name
       value: UFOSlime
+      objectReference: {fileID: 0}
+    - target: {fileID: 33537433561172430, guid: f9e92d3235aad2f4f96fa95a99fb6b0e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 809793280146920308, guid: f9e92d3235aad2f4f96fa95a99fb6b0e, type: 3}
       propertyPath: m_RootOrder
